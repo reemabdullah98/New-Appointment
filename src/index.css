@@ -1,0 +1,168 @@
+/* 🌸 Global Styles with Background */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f8e6d3, #fff0f5);
+  background-attachment: fixed;
+  background-size: cover;
+  color: #333;
+  min-height: 100vh;
+}
+
+/* 🌸 Header / Navbar */
+header {
+  background-color: #f8e6d3;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #d63384;
+}
+
+header h1 {
+  color: #d63384;
+  font-size: 24px;
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #d63384;
+  margin: 0 12px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #b42067;
+}
+
+/* 🌸 Main Titles */
+h1, h2, h3 {
+  color: #d63384;
+  text-align: center;
+}
+
+/* 🌸 Booking & Register & Login Form */
+form {
+  background-color: #fff5f7;
+  width: 400px;
+  margin: 25px auto;
+  padding: 25px;
+  border: 1px solid #f3d1d9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+form input,
+form select {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #f3c7d5;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #d63384;
+  box-shadow: 0 0 5px #d6338465;
+}
+
+/* 🌸 Buttons */
+button,
+.btn-main {
+  background-color: #d63384;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+button:hover,
+.btn-main:hover {
+  background-color: #b42067;
+}
+
+/* 🌸 Cards (Dashboard / Appointments) */
+.card {
+  background-color: #fff5f7;
+  border: 1px solid #f3d1d9;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px auto;
+  width: 80%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.card h3 {
+  color: #d63384;
+}
+
+/* 🌸 Footer */
+footer {
+  background-color: #f8e6d3;
+  padding: 15px;
+  text-align: center;
+  color: #555;
+  border-top: 2px solid #d63384;
+  margin-top: 30px;
+}
+
+footer a {
+  color: #d63384;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* 🌸 Links */
+a {
+  color: #d63384;
+}
+
+a:hover {
+  color: #b42067;
+}
+
+/* 🌸 Responsive Design */
+@media (max-width: 500px) {
+  form {
+    width: 90%;
+  }
+
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.booking-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 100%;
+}
+
+.booking-image-container img {
+  max-width: 70%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
