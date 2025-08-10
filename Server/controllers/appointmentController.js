@@ -40,3 +40,5 @@ module.exports = {
     createAppointment,
     deleteAppointment
 };
+
+console.log("Controller loaded");
