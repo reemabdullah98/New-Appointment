@@ -1,3 +1,4 @@
+// This is a test change for GitHub branch and pull request
 const pool = require('../config/db');
 
 // 📌 Get all appointments
