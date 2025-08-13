@@ -3,7 +3,7 @@ const router = express.Router();
 const {
     getAppointments,
     createAppointment,
-    deleteAppointment
+    deleteAppointment,
 } = require('../controllers/appointmentController');
 
 router.get('/', getAppointments);

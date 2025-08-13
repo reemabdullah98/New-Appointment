@@ -12,6 +12,10 @@ app.use(express.json());
 // Routes
 app.use('/api/appointments', appointmentRoutes);
 
+app.get('/', (req, res) =>{
+  res.send('Hello from Backend!');
+})
+
 // Server running
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

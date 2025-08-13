@@ -1,27 +1,47 @@
-import React from 'react';
 
+// src/components/AppointmentList.jsx
+import React, { useEffect, useState } from 'react';
+import { getAppointments, deleteAppointment } from '../services/api';
 
-function AppointmentList({ appointments, onCancel }) {
-  if (appointments.length === 0) {
-    return <p style={{ textAlign: 'center', marginTop: '30px' }}>No appointments booked yet.</p>;
+export default function AppointmentList() {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState(null);
+
+  async function load() {
+    try {
+      setLoading(true);
+      setItems(await getAppointments());
+      setErr(null);
+    } catch (e) {
+      setErr(e.message);
+    } finally {
+      setLoading(false);
+    }
   }
 
+  useEffect(() => { load(); }, []);
+
+  const onDelete = async (id) => {
+    try {
+      await deleteAppointment(id);
+      setItems((prev) => prev.filter((x) => x.id !== id));
+    } catch (e) {
+      alert(e.message);
+    }
+  };
+
+  if (loading) return <p>Loading…</p>;
+  if (err) return <p className="alert error">Error: {err}</p>;
+
   return (
-    <div>
-      <h3 style={{ textAlign: 'center', margin: '30px 0 15px' }}>Booked Appointments:</h3>
-      <ul style={{ listStyle: 'none', padding: 0 }}>
-        {appointments.map((item, index) => (
-          <li key={index} className="appointment-item">
-            <div>
-              <strong>{item.name}</strong> - {item.service} on {item.date} at {item.time}
-            </div>
-            <button className="cancel-btn" onClick={() => onCancel(index)}>Cancel</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="appointments">
+      {items.map(a => (
+        <li key={a.id}>
+          <strong>{a.name}</strong> — {a.service} — {a.appointment_date} {a.appointment_time}
+          <button onClick={() => onDelete(a.id)}>Delete</button>
+        </li>
+      ))}
+    </ul>
   );
 }
-
-export default AppointmentList;
-

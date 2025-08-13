@@ -1,36 +1,26 @@
-import axios from "axios";
+// src/services/api.js
+const BASE = '/api';
+export async function getAppointments() {
+  const res = await fetch(`${BASE}/appointments`);
+  if (!res.ok) throw new Error('Failed to fetch appointments');
+  return res.json();
+}
 
-const API_URL = "http://localhost:5000/api/appointments";
-
-// جلب جميع المواعيد
-export const getAppointments = async () => {
-  try {
-    const response = await axios.get(API_URL);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching appointments:", error);
-    throw error;
+export async function createAppointment(payload) {
+  const res = await fetch(`${BASE}/appointments, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  }`);
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err?.error || 'Failed to create appointment');
   }
-};
+  return res.json();
+}
 
-// إنشاء موعد جديد
-export const createAppointment = async (appointmentData) => {
-  try {
-    const response = await axios.post(API_URL, appointmentData);
-    return response.data;
-  } catch (error) {
-    console.error("Error creating appointment:", error);
-    throw error;
-  }
-};
-
-// حذف موعد
-export const deleteAppointment = async (id) => {
-  try {
-    const response = await axios.delete(`${API_URL}/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error("Error deleting appointment:", error);
-    throw error;
-  }
-};
+export async function deleteAppointment(id) {
+  const res = await fetch(`${BASE}/appointments/${id}, { method: 'DELETE' }`);
+  if (!res.ok) throw new Error('Failed to delete appointment');
+  return res.json();
+}
