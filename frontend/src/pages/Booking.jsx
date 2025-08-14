@@ -1,6 +1,6 @@
 // src/pages/Booking.jsx
 import React, { useState } from 'react';
-import { createAppointment } from '../services/api';
+import api from '../services/api';
 
 function Booking() {
   const [name, setName] = useState('');
@@ -10,19 +10,22 @@ function Booking() {
   const [time, setTime] = useState('');
   const [status, setStatus] = useState(null); // success | error | null
   const [loading, setLoading] = useState(false);
-
+  const user_id=1
+  const load =async () =>{
+    const {data}=await api.post('/appointments',
+    {user_id,service,date,time}
+   
+  )
+  setTime('')
+  setDate('')
+  setService('')
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus(null);
     setLoading(true);
     try {
-      await createAppointment({
-        name,
-        phone,
-        serviceName:service,
-        appointment_date: date,
-        appointment_time: time,
-      });
+      load()
       setStatus('success');
       setName(''); setPhone(''); setService(''); setDate(''); setTime('');
     } catch (err) {

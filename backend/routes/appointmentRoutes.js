@@ -8,6 +8,5 @@ const {
 
 router.get('/appointments', getAppointments);
 router.post('/appointments', createAppointment);
-router.delete('/appointments/:id', deleteAppointment);
-
+router.delete('/appointments/:id', deleteAppointment)
 module.exports = router;

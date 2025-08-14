@@ -1,12 +1,15 @@
-import React, { useState } from "react";
-import "../index.css";
+import { useState } from "react";
+//import { registerUser } from "../services/api"; // اضيفي هاد
+ import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  // const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!name || !email || !password) {
@@ -14,48 +17,33 @@ function Register() {
       return;
     }
 
-    alert("✅ Account registered successfully!");
-    setName("");
-    setEmail("");
-    setPassword("");
+    try {
+      setLoading(true);
+
+      // ====== fetch (الاتصال بالسيرفر) ======
+     // await registerUser({ name, email, password });
+
+      alert("✅ Account registered successfully!");
+      setName("");
+      setEmail("");
+      setPassword("");
+      
+      // navigate("/login");
+    } catch (err) {
+      alert(`❌ Registration failed: ${err.message}`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="page-wrapper">
-      <div className="form-box">
-        <h2>Create Account</h2>
-        <form onSubmit={handleSubmit}>
-          <label>Full Name</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Enter your name"
-            required
-          />
-
-          <label>Email Address</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            required
-          />
-
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-            required
-          />
-
-          <button type="submit" className="btn-main">Register</button>
-          </form>
-          </div>
-          </div>
+    <form onSubmit={handleSubmit} className="form">
+      
+      <button className="btn-primary" type="submit" disabled={loading}>
+        {loading ? "Creating account..." : "Register"}
+      </button>
+    </form>
   );
 }
+
 export default Register;

@@ -1,30 +1,30 @@
 
 // src/components/AppointmentList.jsx
 import React, { useEffect, useState } from 'react';
-import { getAppointments, deleteAppointment } from '../services/api';
+//import { getAppointments, deleteAppointment } from '../services/api';
 
 export default function AppointmentList() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
 
-  async function load() {
-    try {
-      setLoading(true);
-      setItems(await getAppointments());
-      setErr(null);
-    } catch (e) {
-      setErr(e.message);
-    } finally {
-      setLoading(false);
-    }
-  }
+  //async function load() {
+   // try {
+     // setLoading(true);
+      //setItems(await getAppointments());
+      //setErr(null);
+    //} catch (e) {
+      //setErr(e.message);
+    //} finally {
+      //setLoading(false);
+    //}
+  //}
 
-  useEffect(() => { load(); }, []);
+ // useEffect(() => { load(); }, []);
 
   const onDelete = async (id) => {
     try {
-      await deleteAppointment(id);
+     // await deleteAppointment(id);
       setItems((prev) => prev.filter((x) => x.id !== id));
     } catch (e) {
       alert(e.message);
