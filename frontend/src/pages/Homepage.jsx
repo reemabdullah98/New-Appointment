@@ -1,21 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import salonImage from '../assets/salonImage.jpg';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "../index.css";
 
-function HomePage() {
+const Home = () => {
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    navigate("/login");
+  };
+
   return (
-    <div style={{ textAlign: 'center', padding: '20px' }}>
-      <img 
-        src={salonImage} 
-        alt="Salon" 
-        style={{ width: '80%', borderRadius: '15px', marginBottom: '20px' }} 
-      />
-      <h1 style={{ color: '#d67b93' }}>Book Your Appointment</h1>
-      <Link to="/booking">
-        <button className="btn-custom">Book Now</button>
-      </Link>
+    <div className="home-container">
+      <h1>Welcome to My Beauty World</h1>
+      <button onClick={handleLoginClick} className="btn-login">
+        Login
+      </button>
     </div>
   );
-}
+};
 
-export default HomePage;
+export default Home;

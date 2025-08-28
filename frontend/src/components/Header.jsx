@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 function Header() {
+  const navigate = useNavigate();
+  const handlelogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+  }
   return (
     <header style={{
       backgroundColor: '#d63384',
@@ -13,8 +19,11 @@ function Header() {
 
       <nav style={{ marginTop: '10px' }}>
         <Link to="/" style={linkStyle}>Home</Link>
-        <Link to="/about" style={linkStyle}>About</Link>
+        <Link to="/dashboard" style={linkStyle}>Dashboard</Link>
         <Link to="/contact" style={linkStyle}>Contact</Link>
+        <Link to="/about" style={linkStyle}>About</Link>
+        <Link to="/products">Products</Link>
+        <button onClick={handlelogout}>Log out</button>
       </nav>
     </header>
   );

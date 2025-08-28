@@ -1,49 +1,74 @@
-import { useState } from "react";
-//import { registerUser } from "../services/api"; // اضيفي هاد
- import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import '../index.css';
 
-function Register() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  // const navigate = useNavigate();
+const Register = () => {
+  const navigate = useNavigate();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     if (!name || !email || !password) {
-      alert("⚠ Please fill all fields!");
+      alert('Please fill all fields');
       return;
     }
 
     try {
-      setLoading(true);
+      const response = await axios.post('http://localhost:5000/api/auth/register', {
+        name,
+        email,
+        password,
+      });
 
-      // ====== fetch (الاتصال بالسيرفر) ======
-     // await registerUser({ name, email, password });
+      const { token } = response.data;
 
-      alert("✅ Account registered successfully!");
-      setName("");
-      setEmail("");
-      setPassword("");
-      
-      // navigate("/login");
+      // حفظ التوكن
+      localStorage.setItem('token', token);
+
+      // الانتقال إلى صفحة الـ Dashboard
+      navigate('/dashboard');
     } catch (err) {
-      alert(`❌ Registration failed: ${err.message}`);
-    } finally {
-      setLoading(false);
+      console.error('Registration error:', err);
+      alert('Registration failed. Please try again.');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form">
-      
-      <button className="btn-primary" type="submit" disabled={loading}>
-        {loading ? "Creating account..." : "Register"}
-      </button>
-    </form>
+    <div className="login-container">
+      <h2>Create account</h2>
+      <form onSubmit={handleRegister} className="form-group">
+        <label>Name:</label>
+        <input
+          type="text"
+          value={name}
+          placeholder="Your name"
+          onChange={(e) => setName(e.target.value)}
+        />
+
+        <label>Email:</label>
+        <input
+          type="email"
+          value={email}
+          placeholder="you@example.com"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <label>Password:</label>
+        <input
+          type="password"
+          value={password}
+          placeholder="Minimum 6 characters"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <button type="submit" className="btn-login">Register</button>
+      </form>
+    </div>
   );
-}
+};
 
 export default Register;

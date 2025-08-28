@@ -1,55 +1,72 @@
-// src/pages/Booking.jsx
-import React, { useState } from 'react';
-import api from '../services/api';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Booking() {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [service, setService] = useState('');
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
-  const [status, setStatus] = useState(null); // success | error | null
-  const [loading, setLoading] = useState(false);
-  const user_id=1
-  const load =async () =>{
-    const {data}=await api.post('/appointments',
-    {user_id,service,date,time}
-   
-  )
-  setTime('')
-  setDate('')
-  setService('')
-  }
-  const handleSubmit = async (e) => {
+const Booking = () => {
+  const navigate = useNavigate();
+  const [fullName, setFullName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [selectedService, setSelectedService] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
+
+  const handleBooking = (e) => {
     e.preventDefault();
-    setStatus(null);
-    setLoading(true);
-    try {
-      load()
-      setStatus('success');
-      setName(''); setPhone(''); setService(''); setDate(''); setTime('');
-    } catch (err) {
-      setStatus(err.message || 'error');
-    } finally {
-      setLoading(false);
+
+    if (!fullName || !phoneNumber || !selectedService || !selectedTime) {
+      alert("Please fill in all fields");
+      return;
     }
+
+    // عملية الحجز الوهمية (ممكن تربطها ب backend)
+    console.log("Booking Info:", {
+      fullName,
+      phoneNumber,
+      selectedService,
+      selectedTime,
+    });
+
+    navigate("/dashboard");
   };
 
   return (
-    <form onSubmit={handleSubmit} className="booking-form">
-      
-      <button type="submit" disabled={loading}>
-        {loading ? 'Saving...' : 'Confirm your reservation'}
-      </button>
+    <div className="booking-container">
+      <h2>Book an Appointment</h2>
+      <form onSubmit={handleBooking}>
+        <label>Full Name:</label>
+        <input
+          type="text"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+          placeholder="Enter your full name"
+        />
 
-      {status === 'success' && (
-        <p className="alert success">Appointment saved ✅</p>
-      )}
-      {status && status !== 'success' && (
-        <p className="alert error">Error: {status}</p>
-      )}
-    </form>
+        <label>Phone Number:</label>
+        <input
+          type="tel"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          placeholder="Enter your phone number"
+        />
+
+        <label>Choose a service:</label>
+        <select onChange={(e) => setSelectedService(e.target.value)} value={selectedService}>
+          <option value="">-- Select --</option>
+          <option value="Haircut">Haircut</option>
+          <option value="Makeup">Makeup</option>
+          <option value="Eyebrow">Eyebrow</option>
+          <option value="Laser">Laser</option>
+        </select>
+
+        <label>Select Time:</label>
+        <input
+          type="datetime-local"
+          value={selectedTime}
+          onChange={(e) => setSelectedTime(e.target.value)}
+        />
+
+        <button type="submit">Confirm Booking</button>
+      </form>
+    </div>
   );
-}
+};
 
 export default Booking;
