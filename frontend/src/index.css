@@ -1,56 +1,66 @@
 /* 🌸 Global Styles with Background */
-body {
-  font-family: 'Segoe UI', sans-serif;
+html, body {
+  h1 {
+  font-family: 'Poppins', sans-serif;
+}
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #f8e6d3, #fff0f5);
+  background: linear-gradient(135deg, #deab75, #d7b98e);
   background-attachment: fixed;
   background-size: cover;
-  color: #333;
+  color: #7c7474;
   min-height: 100vh;
 }
 
 /* 🌸 Header / Navbar */
 header {
-  background-color: #f8e6d3;
+  background-color: #f8d6b2;
   padding: 15px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #d63384;
 }
 
 header h1 {
-  color: #d63384;
+  color: #cbb67f;
   font-size: 24px;
   margin: 0;
+  h1 {
+  font-family: 'Poppins', sans-serif;
+}
 }
 
 nav a {
   text-decoration: none;
-  color: #d63384;
+  color: #5f492a;
   margin: 0 12px;
   font-weight: bold;
   transition: color 0.3s ease;
+  padding: 10px 4px;
+
 }
 
 nav a:hover {
-  color: #b42067;
+  color: #c1a773;
+  background-color: #be853f;
 }
 
 /* 🌸 Main Titles */
 h1, h2, h3 {
-  color: #d63384;
+  color: #5f4f33;
   text-align: center;
+  h1 {
+  font-family: 'Poppins', sans-serif;
+}
 }
 
 /* 🌸 Booking & Register & Login Form */
 form {
-  background-color: #fff5f7;
+  background-color: #b39650;
   width: 400px;
   margin: 25px auto;
   padding: 25px;
-  border: 1px solid #f3d1d9;
+  border: 1px solid #9c8453;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   display: flex;
@@ -67,7 +77,7 @@ form input,
 form select {
   padding: 12px;
   margin-bottom: 15px;
-  border: 1px solid #f3c7d5;
+  border: 1px solid #b19360;
   border-radius: 8px;
   outline: none;
   transition: all 0.3s ease;
@@ -75,16 +85,15 @@ form select {
 
 form input:focus,
 form select:focus {
-  border-color: #d63384;
-  box-shadow: 0 0 5px #d6338465;
+  border-color: #987538;
 }
 
 /* 🌸 Buttons */
 button,
 .btn-main {
-  background-color: #d63384;
+  background-color: rgb(170, 135, 71);
   color: #fff;
-  padding: 12px;
+  padding: 10px 4px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -94,13 +103,13 @@ button,
 
 button:hover,
 .btn-main:hover {
-  background-color: #b42067;
+  background-color: #65562f;
 }
 
 /* 🌸 Cards (Dashboard / Appointments) */
 .card {
-  background-color: #fff5f7;
-  border: 1px solid #f3d1d9;
+  background-color: #896b49;
+  border: 1px solid #ad8d56;
   border-radius: 10px;
   padding: 15px;
   margin: 10px auto;
@@ -109,35 +118,18 @@ button:hover,
 }
 
 .card h3 {
-  color: #d63384;
+  color: #856b43;
 }
 
-/* 🌸 Footer */
-footer {
-  background-color: #f8e6d3;
-  padding: 15px;
-  text-align: center;
-  color: #555;
-  border-top: 2px solid #d63384;
-  margin-top: 30px;
-}
 
-footer a {
-  color: #d63384;
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
 
 /* 🌸 Links */
 a {
-  color: #d63384;
+  color: #d1b65d;
 }
 
 a:hover {
-  color: #b42067;
+  color: #a48930;
 }
 
 /* 🌸 Responsive Design */
@@ -161,11 +153,16 @@ a:hover {
 }
 
 .booking-image-container img {
-  max-width: 70%;
+  max-width: 50%;
   height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+
+
+
+
 
 /*products*/
 
@@ -173,10 +170,51 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 }
 
 .product-card {
   border: 1px solid #ccc;
+  border-radius: 10px;
   padding: 10px;
   width: 200px;
+  padding-bottom: 70px;
+  position: relative;
+}
+.product-card button {
+  display: flex;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  border-radius: 10px;
+}
+.product-card img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+
+.login-container button {
+  position: absolute;
+  display: flex;
+  bottom: 100px;
+  padding: 12px 40px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  background-image: url('/src/assets/salonImage.png') ;
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width:99vw;
+  height: 86.9vh;
+  align-items: center;
+  overflow:hidden ;
 }

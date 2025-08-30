@@ -23,7 +23,7 @@ function Contactpage() {
       textAlign: 'center',
       fontFamily: 'Arial'
     }}>
-      <h2 style={{ color: '#d63384', marginBottom: '20px' }}>Contact Us</h2>
+      <h2 style={{ color: '#7d633cff', marginBottom: '20px' }}>Contact Us</h2>
 
       {submitted ? (
         <p style={{ color: 'green', fontSize: '18px' }}>Thank you! We will contact you soon.</p>
@@ -66,7 +66,7 @@ const inputStyle = {
 
 const buttonStyle = {
   padding: '10px 20px',
-  backgroundColor: '#d63384',
+  backgroundColor: '#644b23ff',
   color: '#fff',
   border: 'none',
   borderRadius: '5px',

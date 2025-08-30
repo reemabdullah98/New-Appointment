@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../index.css";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -10,12 +11,16 @@ const Home = () => {
   };
 
   return (
+    <>
     <div className="home-container">
-      <h1>Welcome to My Beauty World</h1>
-      <button onClick={handleLoginClick} className="btn-login">
-        Login
-      </button>
+      <div className="login-container">
+        <button onClick={handleLoginClick} className="login">
+          Login
+        </button>
+      </div>
     </div>
+      <Footer/>
+    </>
   );
 };
 

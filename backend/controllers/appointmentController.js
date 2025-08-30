@@ -1,28 +1,32 @@
 // Server/controllers/appointmentController.js
 const pool = require('../config/db');
-
+const auth = require('../middleware/auth')
 // GET /api/appointments
-const getAppointments = async (req, res) => {
+const getAppointments =  async (req, res) => {
   try {
     const { rows } = await pool.query('SELECT * FROM appointments ORDER BY id DESC');
     res.json(rows);
   } catch (err) {
-   console.error('Error creating appointment:', err);
-res.status(500).json({ error: err.message, details: err });
+    console.error('Error fetching appointments:', err);
+    res.status(500).json({ error: err.message });
   }
 };
 
 // POST /api/appointments
 const createAppointment = async (req, res) => {
   try {
-    const { user_id, service_id, appointment_date, appointment_time } = req.body;
+   const userid = req.user.id;
+    const { name, phone, service, date, time } = req.body;
+    if (!name || !phone || !service || !date || !time) {
+      return res.status(400).json({ error: 'Missing required fields (name, phone, service, date, time)' });
+    }
     const { rows } = await pool.query(
-      `INSERT INTO appointments (user_id, service_id, appointment_date, appointment_time)
-       VALUES ($1,$2,$3,$4) RETURNING *`,
-      [user_id, service_id, appointment_date, appointment_time]
+      'INSERT INTO appointments (name, phone, service, date, time) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+      [name, phone, service, date, time]
     );
     res.status(201).json(rows[0]);
   } catch (err) {
+    console.error('Error creating appointment:', err);
     res.status(500).json({ error: err.message });
   }
 };
@@ -35,6 +39,7 @@ const deleteAppointment = async (req, res) => {
     if (result.rowCount === 0) return res.status(404).json({ error: 'Appointment not found' });
     res.json({ message: 'Appointment deleted' });
   } catch (err) {
+    console.error('Error deleting appointment:', err);
     res.status(500).json({ error: err.message });
   }
 };

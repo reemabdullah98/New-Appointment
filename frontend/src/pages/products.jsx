@@ -17,22 +17,22 @@ function Products() {
 };
 
   return (
-    <div>
-      <h2>Our Products</h2>
-      {products.map((product) => (
-     <div key={product.id} className="product-card">
-      <h3>{product.name}</h3>
-      <p>{product.description}</p>
-      <p>{product.price} €</p>
-      <img src={product.image_url} alt={product.name} />
-      <button onClick={() => handleBuy(p)} style={{ marginTop: '10px' }}>
-        Buy Now
-     </button>
-     </div>
-))}
-      <div className="product-list">
+   <div>
+  <h2>Our Products</h2>
+  <div className="product-list">
+    {products.map((product) => (
+      <div key={product.id} className="product-card">
+        <h3>{product.name}</h3>
+        <p>{product.description}</p>
+        <p>{product.price} €</p>
+        <img src={product.image_url} alt={product.name} />
+        <button onClick={() => handleBuy(product)}>
+          Buy Now
+        </button>
       </div>
-    </div>
+    ))}
+  </div>
+</div>
   );
 }
 

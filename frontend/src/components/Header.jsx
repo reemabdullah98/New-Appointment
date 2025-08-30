@@ -9,19 +9,18 @@ function Header() {
   }
   return (
     <header style={{
-      backgroundColor: '#d63384',
+      backgroundColor: '#93673bff',
       color: 'white',
       padding: '20px 0',
-      textAlign: 'center',
-      marginBottom: '20px'
+      textAlign: 'center'
     }}>
-      <h1 style={{ margin: 0 }}>Beauty Center</h1>
+      <h1 style={{ marginLeft: '20px' }}>MiraLush</h1>
 
-      <nav style={{ marginTop: '10px' }}>
-        <Link to="/" style={linkStyle}>Home</Link>
-        <Link to="/dashboard" style={linkStyle}>Dashboard</Link>
-        <Link to="/contact" style={linkStyle}>Contact</Link>
-        <Link to="/about" style={linkStyle}>About</Link>
+      <nav style={{ marginTop: '10px', marginRight: '10px' }}>
+        <Link to="/">Home</Link>
+        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/contact" >Contact</Link>
+        <Link to="/about" >About</Link>
         <Link to="/products">Products</Link>
         <button onClick={handlelogout}>Log out</button>
       </nav>
