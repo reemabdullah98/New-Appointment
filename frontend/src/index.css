@@ -75,6 +75,7 @@ form label {
 
 form input,
 form select {
+  display: block;
   padding: 12px;
   margin-bottom: 15px;
   border: 1px solid #b19360;
