@@ -1,0 +1,221 @@
+/* 🌸 Global Styles with Background */
+html, body {
+  h1 {
+  font-family: 'Poppins', sans-serif;
+}
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #deab75, #d7b98e);
+  background-attachment: fixed;
+  background-size: cover;
+  color: #7c7474;
+  min-height: 100vh;
+}
+
+/* 🌸 Header / Navbar */
+header {
+  background-color: #f8d6b2;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  color: #cbb67f;
+  font-size: 24px;
+  margin: 0;
+  h1 {
+  font-family: 'Poppins', sans-serif;
+}
+}
+
+nav a {
+  text-decoration: none;
+  color: #5f492a;
+  margin: 0 12px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  padding: 10px 4px;
+
+}
+
+nav a:hover {
+  color: #c1a773;
+  background-color: #be853f;
+}
+
+/* 🌸 Main Titles */
+h1, h2, h3 {
+  color: #5f4f33;
+  text-align: center;
+  h1 {
+  font-family: 'Poppins', sans-serif;
+}
+}
+
+/* 🌸 Booking & Register & Login Form */
+form {
+  background-color: #b39650;
+  width: 400px;
+  margin: 25px auto;
+  padding: 25px;
+  border: 1px solid #9c8453;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+form input,
+form select {
+  display: block;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #b19360;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #987538;
+}
+
+/* 🌸 Buttons */
+button,
+.btn-main {
+  background-color: rgb(170, 135, 71);
+  color: #fff;
+  padding: 10px 4px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+button:hover,
+.btn-main:hover {
+  background-color: #65562f;
+}
+
+/* 🌸 Cards (Dashboard / Appointments) */
+.card {
+  background-color: #896b49;
+  border: 1px solid #ad8d56;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px auto;
+  width: 80%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.card h3 {
+  color: #856b43;
+}
+
+
+
+/* 🌸 Links */
+a {
+  color: #d1b65d;
+}
+
+a:hover {
+  color: #a48930;
+}
+
+/* 🌸 Responsive Design */
+@media (max-width: 500px) {
+  form {
+    width: 90%;
+  }
+
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.booking-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 100%;
+}
+
+.booking-image-container img {
+  max-width: 50%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+/*products*/
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  width: 200px;
+  padding-bottom: 70px;
+  position: relative;
+}
+.product-card button {
+  display: flex;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  border-radius: 10px;
+}
+.product-card img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+
+.login-container button {
+  position: absolute;
+  display: flex;
+  bottom: 100px;
+  padding: 12px 40px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  background-image: url('/src/assets/salonImage.png') ;
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width:99vw;
+  height: 86.9vh;
+  align-items: center;
+  overflow:hidden ;
+}

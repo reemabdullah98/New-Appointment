@@ -1,8 +1,0 @@
-CREATE TABLE IF NOT EXISTS appointments (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    phone VARCHAR(20) NOT NULL,
-    service VARCHAR(100) NOT NULL,
-    date DATE NOT NULL,
-    time TIME NOT NULL
-);
